@@ -1,11 +1,11 @@
 import sys
 import argparse
-from etl.extract import extract_data
-from etl.validate import validate_schema
-from etl.transform import transform_data
-from etl.load import load_data
-from etl.logger import setup_logger
-from etl.config.config import (
+from extract import extract_data
+from validate import validate_schema
+from transform import transform_data
+from load import load_data
+from logger import setup_logger
+from config.config import (
     DATA_PATH, REQUIRED_COLUMNS,
     FILTER_COLUMN, FILTER_VALUE,
     DB_PATH, TABLE_NAME, TABLE_SCHEMA,

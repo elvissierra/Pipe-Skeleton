@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from etl.utils import load_yaml
+from utils import load_yaml
 
 # 1) Load .env for secrets overrides (DB passwords, etc)
 load_dotenv(Path(__file__).parent / ".env")
