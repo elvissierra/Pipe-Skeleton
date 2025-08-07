@@ -30,3 +30,6 @@ dev = [
     "flake8",
     "mypy",
 ]
+
+[project.scripts]
+etl-core = "etl_core.main:run_pipeline"
