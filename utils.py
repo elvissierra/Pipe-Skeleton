@@ -18,6 +18,7 @@ def load_json(path: str) -> dict:
         raise FileNotFoundError(f"JSON config file not found: {path}")
     return json.loads(file.read_text())
 
+
 def load_yaml(path: str) -> dict:
     """
     Load a YAML file from the given path and return its contents as a dict.
@@ -27,12 +28,14 @@ def load_yaml(path: str) -> dict:
         raise FileNotFoundError(f"YAML config file not found: {path}")
     return yaml.safe_load(file.read_text())
 
+
 def ensure_dir(path: str):
     """
     Ensure the parent directory of the given path exists.
     """
     d = Path(path).parent
     d.mkdir(parents=True, exist_ok=True)
+
 
 def write_df(df, path: str, index: bool = False):
     """
@@ -41,10 +44,12 @@ def write_df(df, path: str, index: bool = False):
     ensure_dir(path)
     df.to_csv(path, index=index)
 
+
 def timeit(func):
     """
     Decorator to log the execution time of functions.
     """
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start = time.time()
@@ -54,12 +59,15 @@ def timeit(func):
             "%s took %.2f seconds", func.__name__, elapsed
         )
         return result
+
     return wrapper
+
 
 def retry(exceptions, tries: int = 3, delay: float = 1.0, backoff: float = 2.0):
     """
     Decorator to retry a function if specified exceptions occur.
     """
+
     def decorator(f):
         @functools.wraps(f)
         def wrapped(*args, **kwargs):
@@ -72,8 +80,11 @@ def retry(exceptions, tries: int = 3, delay: float = 1.0, backoff: float = 2.0):
                     mtries -= 1
                     mdelay *= backoff
             return f(*args, **kwargs)
+
         return wrapped
+
     return decorator
+
 
 @contextmanager
 def db_connection(db_path: str):

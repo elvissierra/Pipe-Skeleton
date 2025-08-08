@@ -1,5 +1,6 @@
 import sqlite3
 from logger import setup_logger
+
 logger = setup_logger(__name__)
 
 
@@ -19,7 +20,7 @@ def load_data(df, db_path, table_name, table_schema):
 
     # Insert data
     columns = list(table_schema.keys())
-    placeholders = ', '.join(['?'] * len(columns))
+    placeholders = ", ".join(["?"] * len(columns))
     insert_sql = f"""
         INSERT OR IGNORE INTO {table_name} (
             {', '.join(columns)}

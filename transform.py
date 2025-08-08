@@ -1,5 +1,6 @@
 import pandas as pd
 from logger import setup_logger
+
 logger = setup_logger(__name__)
 
 
@@ -17,9 +18,7 @@ def drop_missing(df: pd.DataFrame, required_cols: list) -> pd.DataFrame:
 
 
 def transform_data(
-    df: pd.DataFrame,
-    filter_col=None,
-    filter_value=None
+    df: pd.DataFrame, filter_col=None, filter_value=None
 ) -> pd.DataFrame:
     logger.info("Starting transformation step")
     if filter_col and filter_value is not None:
